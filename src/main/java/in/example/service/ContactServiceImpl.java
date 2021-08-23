@@ -62,6 +62,11 @@ public class ContactServiceImpl implements ContactService {
 		// TODO Auto-generated method stub
 		
 		contactRepository.deleteById(contactId);
+		 Optional<Contact> opt = contactRepository.findById(contactId);
+			
+			if(null != opt && opt.isPresent()) {
+				return false;
+			}
 		
 		return true;
 	}
